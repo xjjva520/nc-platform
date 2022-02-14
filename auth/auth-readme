@@ -1,0 +1,3 @@
+spring-sercurity 2.0 auth2.0 可集成多种方式登录，只需要实现 AbstractTokenGranter
+
+该工程依赖redis mysql
