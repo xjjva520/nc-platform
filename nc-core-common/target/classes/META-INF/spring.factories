@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.nc.core.common.props.OkHttpConfigurationProperties,\
+com.nc.core.common.props.ThreadPoolProperties,\
+com.nc.core.common.config.UtilsConfiguration

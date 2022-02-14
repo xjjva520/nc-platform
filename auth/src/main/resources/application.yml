@@ -1,0 +1,61 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/xhq?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowMultiQueries=true&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: jjvaqq062082
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      validation-query: select 1
+  redis:
+    needMultiton:
+    client-type: jedis
+    #host: 192.168.219.120
+    #password:
+    connectTimeout: 2000
+    timeout: 2000
+    #port: 6379
+    serializerType: jdk
+    #sentinel:
+    #  master: mymaster
+    #  nodes: 192.168.219.120:26379,192.168.219.120:26378,192.168.219.120:26377
+    #master-slave:
+    #  master: 192.168.219.120:6379
+    #  slave-nodes: 192.168.219.120:6380
+    cluster:
+      nodes: 192.168.219.120:7001,192.168.219.120:7002,192.168.219.120:7003,192.168.219.120:7004,192.168.219.120:7005,192.168.219.120:7006
+      max-redirects: 3
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 3000
+        min-idle: 2
+    reddison:
+      mode: cluster
+      enableLock: true
+nc:
+  okhttp:
+    connectTimeOut: 8
+    readTimeOut: 5
+    writeTimeOut: 3
+  thread:
+    pool:
+      maximumPoolSize: 20
+      keepAliveTime: 3
+      capacity: 5
+      core-pool-size: 20
+  oauth:
+    token:
+      sign-key: f71vCUFIBVZELkeDRm9Vb14q28S8ZeZX
+      state: true
+      single-client-login: true
+  crypto:
+    aesKey: f71vCUFIBVZELkeDRm9Vb14q28S8ZeZX
+    enabled: true
+    isSkipJson: true
+
+#security �����־�������
+logging:
+  level:
+    org.springframework.security: DEBUG

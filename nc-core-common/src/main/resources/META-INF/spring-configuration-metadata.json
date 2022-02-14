@@ -1,0 +1,66 @@
+{
+  "groups": [
+    {
+      "name": "nc.thread.pool",
+      "type": "com.nc.core.common.props.ThreadPoolProperties",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties"
+    },
+    {
+      "name": "nc.okhttp",
+      "type": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "nc.thread.pool.core-pool-size",
+      "type": "java.lang.Integer",
+      "description": "核心线程数",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 8
+    },
+    {
+      "name": "nc.thread.pool.maximum-pool-size",
+      "type": "java.lang.Integer",
+      "description": "最大线程数",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 16
+    },
+    {
+      "name": "nc.thread.pool.keepAliveTime",
+      "type": "java.lang.Long",
+      "description": "活跃时间",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 60
+    },
+    {
+      "name": "nc.thread.pool.capacity",
+      "type": "java.lang.Integer",
+      "description": "队列长度",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 32
+    },
+    {
+      "name": "nc.okhttp.connect-time-out",
+      "type": "java.lang.Integer",
+      "description": "okhttp连接超时时间",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "nc.okhttp.read-time-out",
+      "type": "java.lang.Integer",
+      "description": "响应超时时间",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "nc.okhttp.write-time-out",
+      "type": "java.lang.Integer",
+      "description": "写入时间",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "defaultValue": 5
+    }
+  ],
+  "hints": []
+}

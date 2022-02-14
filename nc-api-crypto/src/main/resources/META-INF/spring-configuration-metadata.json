@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "nc.crypto",
+      "type": "com.nc.api.crypto.props.CryptoProperties",
+      "sourceType": "com.nc.api.crypto.props.CryptoProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "nc.crypto.enabled",
+      "type": "java.lang.Boolean",
+      "description": "加解密开关",
+      "sourceType": "com.nc.api.crypto.props.CryptoProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nc.crypto.desKey",
+      "type": "java.lang.String",
+      "description": "desKey",
+      "sourceType": "com.nc.api.crypto.props.CryptoProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "nc.crypto.aesKey",
+      "type": "java.lang.String",
+      "description": "aesKey",
+      "sourceType": "com.nc.api.crypto.props.CryptoProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "nc.crypto.rsaKey",
+      "type": "java.lang.String",
+      "description": "rsaKey",
+      "sourceType": "com.nc.api.crypto.props.CryptoProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "nc.crypto.isSkipJson",
+      "type": "java.lang.Boolean",
+      "description": "解密JSON是否正常放过",
+      "sourceType": "com.nc.api.crypto.props.CryptoProperties",
+      "defaultValue": true
+    }
+  ],
+  "hints": []
+}

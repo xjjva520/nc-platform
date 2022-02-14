@@ -1,0 +1,59 @@
+{
+  "groups": [
+    {
+      "name": "nc.okhttp",
+      "type": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties"
+    },
+    {
+      "name": "nc.thread.pool",
+      "type": "com.nc.core.common.props.ThreadPoolProperties",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "nc.okhttp.connect-time-out",
+      "type": "java.lang.Long",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "nc.okhttp.read-time-out",
+      "type": "java.lang.Long",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "nc.okhttp.write-time-out",
+      "type": "java.lang.Long",
+      "sourceType": "com.nc.core.common.props.OkHttpConfigurationProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "nc.thread.pool.capacity",
+      "type": "java.lang.Integer",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 32
+    },
+    {
+      "name": "nc.thread.pool.core-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 8
+    },
+    {
+      "name": "nc.thread.pool.keep-alive-time",
+      "type": "java.lang.Long",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 60
+    },
+    {
+      "name": "nc.thread.pool.maximum-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.nc.core.common.props.ThreadPoolProperties",
+      "defaultValue": 16
+    }
+  ],
+  "hints": []
+}

@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.nc.api.crypto.core.DecryptRequestBodyAdvice,\
+com.nc.api.crypto.core.EncryptResponseBodyAdvice
