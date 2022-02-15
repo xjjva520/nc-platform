@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.nc.component.redis.config.MultitonJedisPoolConfiguration,\
-com.nc.component.redis.config.RedissonConfiguration,\
-com.nc.component.redis.config.RedisConfiguration
-

@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.nc.auth.core.config.NcWebMvcConfiguration,\
-com.nc.auth.core.props.TokenProperties
-
-

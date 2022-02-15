@@ -1,8 +1,0 @@
-com\nc\auth\core\resolver\NcPrincipalResolver.class
-com\nc\auth\core\entity\NcPrincipal.class
-com\nc\auth\core\props\Constans.class
-com\nc\auth\core\utils\TokenUtil.class
-com\nc\auth\core\props\TokenProperties.class
-com\nc\auth\core\config\NcWebMvcConfiguration.class
-com\nc\auth\core\utils\NcAuthUtil.class
-META-INF\spring-configuration-metadata.json

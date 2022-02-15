@@ -72,32 +72,8 @@ public class T {
     }
 
     public static void main(String[] args) {
-      /*  byte[] bytes = "APP:APP".getBytes();
-        String s = Base64.getEncoder().encodeToString(bytes);
-        System.out.println(s);*/
-
-       /* String xujianjian = AesUtil.genAesKey();
-        System.out.println(xujianjian);
-        String aa = "b8c8a821baf355d82f9c3b9c77e1f3c5";
-        System.out.println(DigestUtil.hex(aa));
-        String hex = DigestUtil.hex(xujianjian);
-        System.out.println(hex);*/
-        WxUserInfo  wx = new WxUserInfo();
-        wx.setUnionId("sadasda");
-        wx.setPhoneNumber("adadad");
-        wx.setOpenId("123213123123");
-        String s = JSON.toJSONString(wx);
-        String crpty = crpty("en", "f71vCUFIBVZELkeDRm9Vb14q28S8ZeZX", s);
+        String s =AesUtil.genAesKey();
         System.out.println(s);
-        System.out.println(crpty);
-
-        String crpty1 = crpty("de", "f71vCUFIBVZELkeDRm9Vb14q28S8ZeZX", "ZgZwkmUwOTFolZH0IJBSU8gTu99bDwKdrglOm/2u5mWnZpn6qrrPErdBj/AFToJhFGfMf/TU6MMZcRiPYlOBquzlQuDtz9ZUaInjC7Laaf1cRD/AywDIYmdEt+/gnZ+q");
-
-        String avc = "{\"openId\":\"123213123123\",\"phoneNumber\":\"adadad\",\"unionId\":\"sadasda\"}";
-
-        System.out.println(crpty1+"==="+crpty1.length()+":::::"+avc+"===="+avc.length());
-        WxUserInfo parse = JSON.parseObject(crpty1, WxUserInfo.class);
-        System.out.println(JSON.toJSONString(parse));
     }
 
     public static String crpty(String oprType,String aesKey,String body){
