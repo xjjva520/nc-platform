@@ -2,6 +2,7 @@ package com.nc.xhq.auth.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.nc.api.crypto.annotation.crypto.CryptoAes;
+import com.nc.api.crypto.annotation.decrypt.Decrypt;
 import com.nc.auth.core.entity.NcPrincipal;
 import com.nc.auth.core.props.TokenProperties;
 import com.nc.component.redis.client.RedisLockClient;
@@ -13,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.nio.channels.ServerSocketChannel;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
@@ -71,35 +75,19 @@ public class T {
         return map1;
     }
 
-    public static void main(String[] args) {
-        String s =AesUtil.genAesKey();
-        System.out.println(s);
+    public static void main(String[] args) throws IOException {
+       /* String aa = "APP:APP";
+        String decode = Base64Util.encode(aa);
+        System.out.println(decode);*/
+        //
+
     }
 
-    public static String crpty(String oprType,String aesKey,String body){
-
-        if(StringUtil.isEmpty(oprType)){
-            throw new RuntimeException("oprType can`t null(en(加密),de(解密))");
-        }
-
-        if(StringUtil.isEmpty(body)){
-            throw new RuntimeException("params can`t null");
-        }
-
-        if(StringUtil.isEmpty(aesKey)){
-            throw new RuntimeException("aesKey can`t null");
-        }
-        if("en".equals(oprType)){
-            String aa = AesUtil.encryptToBase64(body, aesKey);
-            return aa;
-        }
-
-        if("de".equals(oprType)){
-            byte[] bytes = body.getBytes();
-            byte[] decryptedBody = AesUtil.decryptFormBase64(bytes, aesKey);
-            String s = new String(decryptedBody);
-            return s;
-        }
-        throw new RuntimeException("oprType can`t null(en(加密),de(解密))");
+    public static String crpty(String aesKey){
+        String aa = "AZI8qqIa2C9I+4AfrMx12XJolXxSwwdlfxwpkrhbKc7G2FFjrACawQ8JE7EV62sTgZPhGaPpdYyCUUhFLcKKLQ==";
+        byte[] bytes = AesUtil.decryptFormBase64(aa.getBytes(), aesKey);
+        String s = new String(bytes);
+        System.out.println(s);
+        return s;
     }
 }

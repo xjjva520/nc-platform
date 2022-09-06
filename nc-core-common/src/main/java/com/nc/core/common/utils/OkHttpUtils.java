@@ -49,7 +49,18 @@ public final class OkHttpUtils {
 		}
     	synchronized(OkHttpUtils.class){
 			if (sOkHttpClientSingleton == null) {
-				OkHttpConfigurationProperties prop = SpringApplicationUtil.getBean(OkHttpConfigurationProperties.class);
+				OkHttpConfigurationProperties prop = null;
+				try {
+					prop = SpringApplicationUtil.getBean(OkHttpConfigurationProperties.class);
+				}catch (Exception e){
+
+				}
+				if(prop == null){
+					prop = new OkHttpConfigurationProperties();
+					prop.setConnectTimeOut(5L);
+					prop.setReadTimeOut(5L);
+					prop.setWriteTimeOut(5L);
+				}
 				sOkHttpClientSingleton = new OkHttpClient().newBuilder().connectTimeout(prop.getConnectTimeOut(), TimeUnit.MINUTES)
 						.readTimeout(prop.getReadTimeOut(), TimeUnit.MINUTES).writeTimeout(prop.getWriteTimeOut(), TimeUnit.MINUTES)
 						.protocols(Collections.singletonList((Protocol.HTTP_1_1))).build();

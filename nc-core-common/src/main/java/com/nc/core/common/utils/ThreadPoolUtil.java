@@ -29,6 +29,13 @@ public class ThreadPoolUtil {
 		synchronized (ThreadPoolUtil.class) {
 			if (threadPool == null) {
 				ThreadPoolProperties prop = SpringApplicationUtil.getBean(ThreadPoolProperties.class);
+				if(prop ==null){
+					prop = new ThreadPoolProperties();
+					prop.setCapacity(16);
+					prop.setCorePoolSize(8);
+					prop.setKeepAliveTime(30L);
+					prop.setMaximumPoolSize(20);
+				}
 					threadPool = new ThreadPoolExecutor(prop.getCorePoolSize(), prop.getMaximumPoolSize(), prop.getKeepAliveTime(), TimeUnit.SECONDS,
 						new LinkedBlockingQueue<>(prop.getCapacity()), new ThreadPoolExecutor.CallerRunsPolicy());
 				/*threadPool = new ThreadPoolExecutor(ThreadPoolProperties.corePoolSize, ThreadPoolProperties.maximumPoolSize, ThreadPoolProperties.keepAliveTime, TimeUnit.SECONDS,

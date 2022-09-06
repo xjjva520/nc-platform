@@ -1,6 +1,8 @@
 server:
   port: 8085
 spring:
+  application:
+    name: nc-auth
   datasource:
     url: jdbc:mysql://localhost:3306/xhq?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowMultiQueries=true&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
     username: root
@@ -11,11 +13,11 @@ spring:
   redis:
     needMultiton:
     client-type: jedis
-    #host: 192.168.219.120
-    #password:
+    host: 192.168.219.120
+    password:
     connectTimeout: 2000
     timeout: 2000
-    #port: 6379
+    port: 6379
     serializerType: jdk
     #sentinel:
     #  master: mymaster
@@ -23,16 +25,16 @@ spring:
     #master-slave:
     #  master: 192.168.219.120:6379
     #  slave-nodes: 192.168.219.120:6380
-    cluster:
-      nodes: 192.168.219.120:7001,192.168.219.120:7002,192.168.219.120:7003,192.168.219.120:7004,192.168.219.120:7005,192.168.219.120:7006
-      max-redirects: 3
+    #cluster:
+    #  nodes: 192.168.219.120:7001,192.168.219.120:7002,192.168.219.120:7003,192.168.219.120:7004,192.168.219.120:7005,192.168.219.120:7006
+    #  max-redirects: 3
     jedis:
       pool:
         max-active: 8
         max-wait: 3000
         min-idle: 2
     reddison:
-      mode: cluster
+      mode: single
       enableLock: true
 nc:
   okhttp:
@@ -54,7 +56,12 @@ nc:
     aesKey: f71vCUFIBVZELkeDRm9Vb14q28S8ZeZX
     enabled: true
     isSkipJson: true
-
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:1001/eureka/
 #security �����־�������
 logging:
   level:

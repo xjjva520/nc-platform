@@ -1,7 +1,9 @@
 package com.nc.xhq.auth.support;
 
+import com.alibaba.fastjson.JSON;
 import com.nc.auth.core.entity.NcPrincipal;
 import com.nc.component.redis.client.RedisOprClient;
+import com.nc.xhq.auth.feign.IStudentClient;
 import com.nc.xhq.auth.props.AuthProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -10,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -25,12 +28,16 @@ public class NcAccountDetailService implements UserDetailsService {
     private  RedisOprClient redisOprClient;
     @Autowired
     private AuthProperties authProperties;
+    @Autowired
+    private IStudentClient studentClient;
 
     private static long monthTime = 30L*24L*60L * 60L;
     private final static String LOGIN_FAIL_CONTROL_KEY = "login_fail_control:%s:%s";
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Map<String, String> map = studentClient.findByName();
+        System.out.println("-----------------+"+ JSON.toJSONString(map));
         NcPrincipal principal =  new NcPrincipal();
         principal.setLoginUserName("xujianjian");
         principal.setClientId("APP");
