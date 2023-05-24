@@ -15,10 +15,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @description: 在池的配置中 一般maxActive最大激活连接数
@@ -89,8 +86,7 @@ public class RedissonConfiguration {
         String master = String.format(nodeFormat, masterSlave.getMaster());
         serversConfig.setMasterAddress(master);
         List<String> nodes = masterSlave.getSlaveNodes();
-        List<String> collect = nodes.stream().map(s -> String.format(nodeFormat, s)).collect(Collectors.toList());
-        serversConfig.addSlaveAddress(collect.toArray(new String[collect.size()]));
+        serversConfig.addSlaveAddress(nodes.stream().map(s -> String.format(nodeFormat, s)).toArray(String[]::new));
         String password = properties.getPassword();
         if (StringUtil.isNotBlank(password)) {
             serversConfig.setPassword(password);
@@ -104,11 +100,10 @@ public class RedissonConfiguration {
         RedisProperties properties = ncRedisProperties.getRedisProperties();
         RedisProperties.Sentinel sentinel = properties.getSentinel();
         List<String> nodes = sentinel.getNodes();
-        List<String> collect = nodes.stream().map(s -> String.format(nodeFormat, s)).collect(Collectors.toList());
         Config config = new Config();
         SentinelServersConfig serversConfig = config.useSentinelServers();
         serversConfig.setMasterName(sentinel.getMaster());
-        serversConfig.addSentinelAddress(collect.toArray(new String[collect.size()]));
+        serversConfig.addSentinelAddress(nodes.stream().map(s -> String.format(nodeFormat, s)).toArray(String[]::new));
         String password = sentinel.getPassword();
         if (StringUtil.isNotBlank(password)) {
             serversConfig.setPassword(password);
@@ -123,8 +118,7 @@ public class RedissonConfiguration {
         ClusterServersConfig serversConfig = config.useClusterServers();
         RedisProperties properties = ncRedisProperties.getRedisProperties();
         List<String> nodes = properties.getCluster().getNodes();
-        List<String> collect = nodes.stream().map(s -> String.format(nodeFormat, s)).collect(Collectors.toList());
-        serversConfig.addNodeAddress(collect.toArray(new String[collect.size()]));
+        serversConfig.addNodeAddress(nodes.stream().map(s -> String.format(nodeFormat, s)).toArray(String[]::new));
         String password = properties.getPassword();
         if (StringUtil.isNotBlank(password)) {
             serversConfig.setPassword(password);

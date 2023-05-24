@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		//SpringApplication.run(DemoApplication.class, args);
+		String string = Integer.toHexString(7094);
+		System.out.println(string);
 	}
 
 }

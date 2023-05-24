@@ -38,13 +38,11 @@ public class NcElExpressionEvaluator extends CachedExpressionEvaluator {
 
     private Method getTargetMethod(Class<?> targetClass, Method method) {
         AnnotatedElementKey methodKey = new AnnotatedElementKey(method, targetClass);
-        return (Method)this.methodCache.computeIfAbsent(methodKey, (key) -> {
-            return AopUtils.getMostSpecificMethod(method, targetClass);
-        });
+        return this.methodCache.computeIfAbsent(methodKey, (key) -> AopUtils.getMostSpecificMethod(method, targetClass));
     }
 
     public String evalAsText(String expression, AnnotatedElementKey methodKey, EvaluationContext evalContext) {
-        return (String)this.eval(expression, methodKey, evalContext, String.class);
+        return this.eval(expression, methodKey, evalContext, String.class);
     }
 
     @Nullable

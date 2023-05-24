@@ -1,16 +1,19 @@
 package com.example.demo.data.structure.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @description:
  * @author: jjxu
  * @time: 2022/9/3
  * @package: com.example.demo.data.structure.entity
  */
+
 public class Student implements Comparable<Student>{
 
-    private int age;
-
     private String name;
+
+    private int age;
 
     public Student(int age, String name) {
         this.age = age;
@@ -19,10 +22,12 @@ public class Student implements Comparable<Student>{
 
     @Override
     public String toString() {
-        return "Student{" +
-                "age=" + age +
-                ", name='" + name + '\'' +
-                '}';
+        return "age=" + age ;
+
+    }
+
+    public int getAge() {
+        return age;
     }
 
     @Override

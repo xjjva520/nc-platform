@@ -94,7 +94,10 @@ public class SingleLinkList<T extends Comparable<T>> {
         if(flag){
             //因为上面分析的是当前节点的下一个节点去比对移除的节点，那么也就是当前节点的下个节点直接指向
             //当前节点的下下个节点即可
+            Node next = cur.next;
             cur.next = cur.next.next;
+            //把移除节点的next指针排除
+            next.next=null;
             size -- ;
         }
         return flag;
@@ -169,6 +172,33 @@ public class SingleLinkList<T extends Comparable<T>> {
         }
     }
 
+
+    public void r(){
+        if(head==null ||size==0){
+            throw new RuntimeException("非法");
+        }
+        Node rvHead = new<T> Node(null,null);
+        Node cur = head.next;
+        Node next;
+        //进行反转
+        while(true){
+            //先记录下一个节点，下一个节点在下次循环处理的时候，要变成当前节点
+            next = cur.next;
+            //当前节点的next节点指向反转头部的下一个节点(如果是node1节点，因为要反转变成最后一个节点，也就是next 指向为null,而首次rvHead.next恰好为空)
+            //第二次进来，rvHead。next,当前节点的前一个节点，也就完成了反转就变成了node2->node1
+            cur.next = rvHead.next;
+            //将当前节点赋值给新头部的next节点
+            rvHead.next = cur;
+
+            //当前节点后移以为
+            cur = next;
+
+            if(cur == null){
+                break;
+            }
+        }
+        head.next = rvHead.next;
+    }
 
     public int getSize() {
         return size;
